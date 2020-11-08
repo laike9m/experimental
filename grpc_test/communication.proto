@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+import "google/protobuf/empty.proto";
+
+service Communication {
+  rpc SendFrame(Frame) returns (google.protobuf.Empty) {}
+
+  rpc GetTargetFrame(FrameNameList) returns (stream Frame) {}
+}
+
+message Frame {
+  optional string name = 1;
+}
+
+message FrameNameList {
+  repeated string names = 1;
+}
